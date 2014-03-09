@@ -2,6 +2,6 @@
 
 ###Links
 Run:
-'''bash
+```bash
 $ python utils/links.py
-'''
+```
