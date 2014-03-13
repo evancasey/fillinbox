@@ -11,7 +11,12 @@ var passport = require('passport');
 var expressValidator = require('express-validator');
 var connectAssets = require('connect-assets');
 
+/**
+ * Import Email script.
+ */
 
+var script = require('./script.js');
+console.log(script.execute("testemail@gmail.com"));
 
 /**
  * Load controllers.
@@ -39,7 +44,7 @@ var app = express();
  * Mongoose configuration.
  */
 
-mongoose.connect(secrets.db);
+mongoose.connect("mongodb://fillinbox:westside@ds033579.mongolab.com:33579/fillinbox");
 mongoose.connection.on('error', function() {
   console.error('✗ MongoDB Connection Error. Please make sure MongoDB is running.');
 });
