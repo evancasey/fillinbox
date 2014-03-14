@@ -16,7 +16,7 @@ var connectAssets = require('connect-assets');
  */
 
 var script = require('./script.js');
-console.log(script.execute("testemail@gmail.com"));
+script.emailSignUp("testemail@gmail.com","https://www.hm.com/us/newsletter");
 
 /**
  * Load controllers.
