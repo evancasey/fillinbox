@@ -1,4 +1,4 @@
-var phantom = require("node-phantom");
+var phantom = require("phantom-sync");
 var phantomCluster = require("phantom-cluster");
 
 exports.execute = function() {
@@ -28,6 +28,14 @@ exports.execute = function() {
 // valid form exists on that url
 exports.emailSignUp = function(email,url) {
 
+  ph = phantom.create();
+  page = pt.createPage();
+  status = page.open("http://google.com");
+  title = page.evaluate(function() {
+    return document.title;});
+  console.log(title);
+
+
   // create a phantomjs instance
   phantom.create(function(err,ph) {
 
@@ -47,7 +55,7 @@ exports.emailSignUp = function(email,url) {
 
         page.evaluate(function(email) {
 
-          console.log(email);
+          console.log(typeof email);
 
           // find all forms on the page
           var forms = document.getElementsByTagName('form');
@@ -66,12 +74,9 @@ exports.emailSignUp = function(email,url) {
               //   selects[j].options[1].selected = true;
               // }
 
-              console.log("outside");
-
               // fill in text and radiobox inputs
               for (var j=0; j<inputs.length; j++) {
                 if (inputs[j].type === "text" || inputs[j].type === "hidden") {
-                  console.log(email);
                   // look up element and fill in
                   inputs[j] = email;
                 } 
@@ -97,8 +102,10 @@ exports.emailSignUp = function(email,url) {
             return true;
           }
 
+          return true;
+
           // console.log(document.location);
-        },function(err,result) {}, "test");
+        }, function(){     return {message : 'hello world'};  });
       });
     });
   });
