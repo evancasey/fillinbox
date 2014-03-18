@@ -37,57 +37,70 @@ exports.emailSignUp = function(email,url) {
         console.log('Page title is ' + msg);
       };
 
-      page.onResourceReceived = function(response) {
-        console.log('Receive ' + JSON.stringify(response, undefined, 4));
-      };
+      // page.onResourceReceived = function(response) {
+      //   console.log('Receive ' + JSON.stringify(response, undefined, 4));
+      // };
 
       page.open(url, function(err,status) {
 
-        var response = page.evaluate(function() {
+        var email = "test";
 
-          // // find all forms on the page
-          // var forms = document.getElementsByTagName('form');
+        page.evaluate(function(email) {
 
-          // for (var f; f<forms.length; f++) {
-            
-          //   // check validity
-          //   if (forms[i].getAttribute('method') == "POST" && isValidSignUp(forms[i])) {
+          console.log(email);
 
-          //     // get child html of form and parse it for text input
-          //     var inputs = forms[i].children.getElementsByTagName('input'),
-          //         selects = document.getElementsByTagName('select');
+          // find all forms on the page
+          var forms = document.getElementsByTagName('form');
+  
+          for (var f=0; f<forms.length; f++) {
 
-          //     // fill in all dropdowns with first option after default
-          //     for (var j=0;j<selects.length;j++ ) {
-          //       selects[j].options[1].selected = true;
-          //     }
+            // check validity
+            if (isValidSignUp(forms[f])) {
 
-          //     // fill in text and radiobox inputs
-          //     for (var j; i<inputs.length; j++) {
-          //       if (inputs[j].type === "text") {
-          //         // look up element and fill in
-          //       } else if (inputs[j].type === "checkbox") {
-          //         // look up element and fill in
-          //       } 
+              // get child html of form and parse it for text input
+              var inputs = forms[f].getElementsByTagName('input'),
+                  selects = document.getElementsByTagName('select');
 
-          //     }
-          //   }
+              // fill in all dropdowns with first option after default
+              // for (var j=0; j<selects.length; j++ ) {
+              //   selects[j].options[1].selected = true;
+              // }
 
-          //   // once we fill everything out, submit it!
-          //   return forms[i].submit();
-          // }
-          console.log(document.location);
-        });
+              console.log("outside");
+
+              // fill in text and radiobox inputs
+              for (var j=0; j<inputs.length; j++) {
+                if (inputs[j].type === "text" || inputs[j].type === "hidden") {
+                  console.log(email);
+                  // look up element and fill in
+                  inputs[j] = email;
+                } 
+                // else if (inputs[j].type === "checkbox") {
+                //   // look up element and fill in
+                // } 
+
+              }
+
+              // once we fill everything out, submit it!
+              forms[f].submit();
+            } 
+          } 
+
+
+          // checks to see if a form is a valid signup form
+          function isValidSignUp(form) {
+            // filter on METHOD = "POST" and class, name, 
+            // or id contains "newsletter", "email", or "signup", ignoring caps
+            if (form.method !== "POST" && form.method !== "post") {
+              return false;
+            }
+            return true;
+          }
+
+          // console.log(document.location);
+        },function(err,result) {}, "test");
       });
     });
   });
 
 };
-
-
-// checks to see if a form is a valid signup form
-function isValidSignUp(formHtml) {
-  // filter on METHOD = "POST" and class, name, 
-  // or id contains "newsletter", "email", or "signup", ignoring caps
-  return true;
-}
