@@ -2,15 +2,14 @@
 
 ###Getting Started
 
-Install node dependencies:
+Install rails dependencies:
 ```bash
-$ npm install
-$ npm install nodemon
+$ bundle install
 ```
 
 Start the web server:
 ```bash
-$ nodemon app.js
+$ rails s
 ```
 
 ###Links
