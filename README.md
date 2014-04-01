@@ -2,22 +2,17 @@
 
 ###Getting Started
 
-Install rails dependencies:
+Install python dependencies:
 ```bash
-$ bundle install
+$ pip install -r requirements.txt
 ```
 
 Start the web server:
 ```bash
-$ rails s
+$ python run.py
 ```
 
-###Links
-
-Install python dependencies:
-```bash
-$ pip install -r utils/requirements.txt
-```
+### Links
 
 Run:
 ```bash
