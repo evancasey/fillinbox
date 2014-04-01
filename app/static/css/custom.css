@@ -62,22 +62,6 @@ h2 {
   font-weight: bold;
 }
 
-.intro-header {
-  padding-left: 30px;
-  padding-right: 20px;
-}
-
-.intro-body {
-  padding-left: 30px;
-  padding-right: 30px;
-    margin-bottom: 10px;
-}
-
-.intro-footer {
-  padding-left: 30px;
-    padding-right: 30px;
-}
-
-.intro-footer .btn{
-    margin-bottom: 20px;
+.modal-content {
+  width: 62.5rem;
 }

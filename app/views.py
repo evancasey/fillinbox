@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, render_template, session, url_for, jsonify
 from app import app
+from models import create_user
 import pdb
 
 @app.route('/',methods=['GET'])
@@ -10,5 +11,5 @@ def index():
 def create():
     if request.method == "POST":
         data = request.form
-        print data
+        create_user(data["email"])
         return jsonify(data)
