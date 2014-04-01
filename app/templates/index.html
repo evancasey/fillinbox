@@ -12,18 +12,53 @@
     <link href="/static/css/bootstrap.css" rel="stylesheet">
 
     <!-- Add custom CSS here -->
-    <link rel="stylesheet" href="/static/font-awesome/css/font-awesome.min.css">
-    <link href="/static/css/custom.css" rel="stylesheet" type"text/css"/> 
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/flat-ui.css" rel="stylesheet">
+    <link href="/static/css/custom.css" rel="stylesheet"> 
+
+
   </head>
 
   <body>
 
-    <h1>Hello World!</h1>
+    <!-- Index HTML -->
+    <div class="container">
+      <div class="header">
+        <img src="/static/img/mail.svg">
+        <h1>FillInbox</h1>
+        <h2>Sign up your friends for 1000+ recurring email newsletters</h2>
+        <div class="form-group">  
+          <input type="text" class="form-control" id="signup-form" value="" placeholder="Enter an email address" name="email">
+        </div>
 
+        <button type="button" class="btn btn-hg btn-embossed btn-success" id="signup-btn">Submit!</button>
+      </div>
+    </div>
+
+    <!-- Signup modal -->
+    <div id="intro" class="modal fade"> 
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title">Signup Success!</h4>
+          </div>
+          <div class="modal-body">
+            User has been signed up for FillInbox.<br><br> Once the request is processed, they will start receiving emails from 1000+ recurring email newsletters.
+          </div>
+          <div class="modal-footer">
+            <a href="#" class="btn btn-primary">Go Back</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="static/js/jquery-1.10.2.js"></script>
     <script src="static/js/bootstrap.js"></script>
+    <script src="static/js/form.js"></script>
+    <script type=text/javascript> $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
 
   </body>
 </html>
+
