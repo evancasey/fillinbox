@@ -9,6 +9,7 @@ $(function(){
 
     if (validateForm(newUserData.val()) !== true) {
         $("#err").modal("show");
+        $('#err .modal-body').text('Please enter a valid email address.');
     } else {
   
       $.ajax({
@@ -17,8 +18,15 @@ $(function(){
         url: $SCRIPT_ROOT + '/create',
         data: newUserData.serialize()
       }).done(function(data) {
-          $("#intro").modal("show");      
-          $('#intro .modal-body').text(data["email"] + " has been signed up for FillInbox. Once the request is processed, this email address will start receiving extremely large amounts of email newsletters.");
+          if(data.errors) {
+              $("#err").modal("show");
+              $("#err .modal-body").text(data["errors"]);
+          } else {
+            $("#intro").modal("show");      
+            $('#intro .modal-body').text(data["email"] + " has been signed up for FillInbox. Once the request is processed, this email address will start receiving extremely large amounts of email newsletters.");
+          }
+
+          
       });
     }
   });

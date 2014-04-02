@@ -65,3 +65,15 @@ h2 {
 .modal-content {
   width: 62.5rem;
 }
+
+#twitter-widget-0 {
+  position: fixed;
+  top: 11px;
+  left: 14px;
+}
+
+#fb {
+  position: fixed;
+  top: 0px;
+  left: 94px;
+}

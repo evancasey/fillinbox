@@ -21,11 +21,26 @@
 
   <body>
 
+    <!-- Social -->
+    <div class="social">
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+      <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://inboxnuke.com" data-text="I just nuked someones inbox!" >Tweet</a>
+      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+      <div id="fb" class="fb-like" data-href="http://inboxnuke.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="true"></div>
+    </div>
+
     <!-- Index HTML -->
     <div class="container">
       <div class="header">
         <img src="/static/img/mail.svg">
-        <h1>FillInbox</h1>
+        <h1>InboxNuke</h1>
         <h2>Sign up your friends for 1000+ recurring email newsletters</h2>
         <div class="form-group">  
           <input type="text" class="form-control" id="signup-form" value="" placeholder="Enter an email address" name="email">
@@ -61,7 +76,7 @@
             <h4 class="modal-title">Whoops!</h4>
           </div>
           <div class="modal-body">
-            Please enter a valid email address.
+
           </div>
           <div class="modal-footer">
             <a href="#" data-dismiss="modal" class="btn btn-embossed btn-info">Try again</a>
