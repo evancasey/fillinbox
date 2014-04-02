@@ -23,7 +23,7 @@ $(function(){
               $("#err .modal-body").text(data["errors"]);
           } else {
             $("#intro").modal("show");      
-            $('#intro .modal-body').text(data["email"] + " has been signed up for FillInbox. Once the request is processed, this email address will start receiving extremely large amounts of email newsletters.");
+            $('#intro .modal-body').text(data["email"] + " has been signed up for InboxNuke. Once the request is processed, this email address will start receiving extremely large amounts of email newsletters.");
           }
 
           
